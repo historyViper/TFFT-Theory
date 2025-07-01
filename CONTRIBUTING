@@ -1,0 +1,203 @@
+# Contributing to Temporal Flow Field Theory (TFFT)
+
+Welcome to the TFFT research community! We're building the future of physics through open collaboration.
+
+## 🌟 Ways to Contribute
+
+### 🧮 Theoretical Development
+- **Mathematical formulation**: Help develop relativistic field equations
+- **Dimensional analysis**: Verify and extend our mathematical framework
+- **TFFT field equations**: Refine and extend our temporal gradient scaling laws (|∇τ| = GM/(c²r²))
+- **Mathematical framework**: Develop the theoretical foundation of temporal viscosity dynamics
+- **Connection to established physics**: Bridge TFFT with General Relativity and Quantum Field Theory
+
+### 🔬 Computational Validation
+- **New moon systems**: Apply TFFT to additional planetary moons
+- **Parameter studies**: Investigate sensitivity to orbital parameters
+- **Multi-source modeling**: Quantify solar, galactic, and inter-moon τ-shear contributions
+- **Statistical analysis**: Improve our uncertainty estimates
+
+### 🛠️ Experimental Design
+- **Laboratory experiments**: Design tests for EM-induced τ-shear effects
+- **Observational strategies**: Propose ways to detect temporal viscosity signatures
+- **Measurement precision**: Identify what accuracy is needed for orbital decay detection
+- **Instrumentation**: Suggest tools for testing TFFT predictions
+
+### 📊 Data Analysis
+- **Observational data compilation**: Gather heating measurements from literature
+- **Cross-validation**: Test TFFT against other planetary systems
+- **Error analysis**: Improve our statistical treatment of predictions
+- **Historical data**: Look for TFFT signatures in archival observations
+
+### 📚 Documentation
+- **Educational materials**: Create tutorials explaining TFFT concepts
+- **Code documentation**: Improve commenting and examples
+- **Theory explanations**: Write accessible explanations for different audiences
+- **FAQ development**: Answer common questions about TFFT
+
+## 🔬 Scientific Standards
+
+### Peer Review Process
+- **All contributions** undergo community review
+- **Minimum 2 reviewers** for theoretical work
+- **Computational results** must be reproducible
+- **Citations required** for all claims and data sources
+
+### Quality Guidelines
+- **Mathematical rigor**: Show all derivation steps
+- **Dimensional consistency**: Verify units throughout
+- **Physical intuition**: Explain the physics behind mathematics
+- **Reproducibility**: Provide complete code and data
+
+### Academic Integrity
+- **Proper attribution**: Credit all sources and contributors
+- **Conflict disclosure**: Declare any conflicts of interest
+- **Open data**: Share datasets when legally possible
+- **Collaborative spirit**: Acknowledge joint work appropriately
+
+## 📋 Submission Guidelines
+
+### Before You Start
+1. **Check existing issues** to avoid duplication
+2. **Read our theoretical framework** in the main paper
+3. **Review current calculations** to understand methodology
+4. **Join our discussions** in Issues or Discussions
+
+### Making Contributions
+
+#### For Code Contributions
+```bash
+1. Fork the repository
+2. Create a feature branch: git checkout -b feature/new-calculation
+3. Make your changes with clear comments
+4. Add tests and documentation
+5. Submit a pull request with detailed description
+```
+
+#### For Theoretical Contributions
+1. **Create an Issue** describing your theoretical insight
+2. **Provide mathematical details** in LaTeX format
+3. **Show derivations** step-by-step
+4. **Connect to existing TFFT** framework
+5. **Include references** to supporting literature
+
+#### For Data Contributions
+1. **Document data sources** with full citations
+2. **Provide uncertainty estimates** where available
+3. **Include processing scripts** for reproducibility
+4. **Explain data selection criteria**
+5. **Validate against our existing dataset**
+
+### Pull Request Template
+```markdown
+## Type of Contribution
+- [ ] Theoretical development
+- [ ] Computational validation  
+- [ ] Experimental design
+- [ ] Data analysis
+- [ ] Documentation
+
+## Description
+Brief description of your contribution
+
+## Changes Made
+- List key changes
+- Highlight new equations or algorithms
+- Note any breaking changes
+
+## Testing
+- [ ] Code runs without errors
+- [ ] Results are physically reasonable
+- [ ] Documentation updated
+- [ ] Examples provided
+
+## Validation
+How did you verify your contribution?
+
+## Related Issues
+Fixes #(issue number)
+```
+
+## 🤝 Community Guidelines
+
+### Communication Standards
+- **Respectful discourse**: Treat all contributors with respect
+- **Scientific objectivity**: Focus on evidence and logic
+- **Constructive criticism**: Provide helpful feedback
+- **Open minds**: Be willing to change views based on evidence
+
+### Collaboration Principles
+- **Credit sharing**: Acknowledge all significant contributors
+- **Knowledge sharing**: Explain your reasoning and methods
+- **Helping others**: Support newcomers to the field
+- **Building together**: We're all working toward the same goal
+
+### Conflict Resolution
+1. **Direct discussion** between parties
+2. **Community mediation** through Issues/Discussions
+3. **Maintainer intervention** if needed
+4. **Clear documentation** of resolution
+
+## 🏆 Recognition
+
+### Contributor Acknowledgment
+- **All contributors** listed in repository credits
+- **Significant contributions** acknowledged in future papers
+- **Original insights** credited to their developers
+- **Collaborative discoveries** shared among contributors
+
+### Publication Opportunities
+- **High-impact contributions** may warrant co-authorship on future papers
+- **Independent discoveries** encouraged for separate publication
+- **Conference presentations** supported for major contributors
+- **Research collaboration** opportunities with lead researchers
+
+## 🎯 Current Priority Areas
+
+### High Priority
+1. **Multi-source τ-shear modeling** (quantify contamination effects)
+2. **Relativistic field equations** (extend beyond Newtonian limit)
+3. **Laboratory experiment design** (EM-induced τ-shear tests)
+4. **Additional moon validation** (Triton, Mimas, etc.)
+
+### Medium Priority
+1. **Error analysis improvement** (better uncertainty estimates)
+2. **Computational optimization** (faster calculation methods)
+3. **Educational materials** (tutorials and explanations)
+4. **Data visualization** (better plots and figures)
+
+### Research Questions
+- How do electromagnetic fields couple to τ-shear?
+- What's the precise energy source for temporal heating?
+- How does TFFT connect to cosmological acceleration?
+- Can we detect orbital decay signatures?
+- **How can we extend the temporal gradient scaling law |∇τ| = GM/(c²r²) to relativistic regimes?**
+- What are the field equations for temporal viscosity in curved spacetime?
+
+## 📞 Getting Help
+
+### Resources
+- **Issues**: Ask questions or report problems
+- **Discussions**: General theoretical discussions
+- **Email**: jason.richardson65535@gmail.com for direct contact
+- **Documentation**: Check docs/ folder for detailed explanations
+
+### Mentorship
+- **New contributors** paired with experienced community members
+- **Study groups** for complex theoretical topics
+- **Code review** for computational contributions
+- **Writing support** for documentation improvements
+
+---
+
+## 🌌 Vision Statement
+
+We're not just developing a theory—we're **revolutionizing our understanding of spacetime itself**. Every contribution, no matter how small, helps build toward a new physics that could transform technology, cosmology, and our fundamental view of reality.
+
+**Join us in discovering the viscous nature of time!**
+
+---
+
+*"The best way to predict the future is to invent it."* - Alan Kay
+
+**Together, we're inventing the future of physics.** 🚀✨
