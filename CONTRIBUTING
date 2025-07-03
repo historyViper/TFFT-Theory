@@ -188,6 +188,26 @@ Fixes #(issue number)
 - **Code review** for computational contributions
 - **Writing support** for documentation improvements
 
+## ⚠️ Known Limitations and Current Development
+
+### Current Model Constraints
+- **Fluid dynamics framework**: The present equations borrow from fluid mechanics, which may not fully capture temporal medium behavior
+- **Simplified assumptions**: Linear superposition and basic viscosity models need refinement
+- **Eccentricity challenges**: Current framework struggles with highly eccentric orbits and three-body dynamics
+- **Gradient medium mathematics**: We're developing new mathematical tools for continuously varying temporal density
+
+### Active Development Areas
+- **Beyond fluid mechanics**: Developing native temporal field equations
+- **Gradient medium theory**: Creating mathematical framework for non-uniform temporal density
+- **Multi-source interactions**: Understanding how temporal gradients from multiple bodies combine
+- **Relativistic formulation**: Extending beyond Newtonian approximations
+
+### Why We're Sharing Early Work
+- **Transparent development**: Open science approach to theory building
+- **Community input**: Seeking insights from diverse scientific backgrounds
+- **Iterative improvement**: Better to refine openly than develop in isolation
+- **Predictive success**: Despite limitations, current model outperforms conventional approaches
+
 ---
 
 ## 🌌 Vision Statement
