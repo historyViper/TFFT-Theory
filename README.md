@@ -35,7 +35,7 @@ UPDATED July 4th, 2025
 | **Enceladus** | Saturn | 5.07×10⁹ W | 1.00×10¹⁰ W | 0.51 | ✅ Good |
 | **Titan** | Saturn | 3.99×10¹⁰ W | 1.00×10¹¹ W | 0.40 | ✅ Good |
 | **Triton** | Neptune | 9.66×10⁹ W | 1.00×10¹⁰ W | 0.97 | ✅ **Nearly Perfect** |
-| **Kepler-1625b** | Exoplanet | 1.03×10¹² W (TFFT) / 2-10×10¹² W (w/ EM) | TBD | - | 🚀 **Testable Prediction** |
+| **Kepler-1625b** | Exoplanet | 1.83×10¹² W (TFFT) Temp Mod | TBD | - | 🚀 **Testable Prediction** |
 
 **Average accuracy: Within factor of 3 for all moons across 3+ planetary systems**
 
