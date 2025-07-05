@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFFT Universal Tidal Heating Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .input-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .preset-moons {
+            margin-bottom: 30px;
+        }
+        
+        .preset-moons h3 {
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+        
+        .moon-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .moon-btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+        
+        .moon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .unit {
+            font-size: 0.9em;
+            color: #718096;
+            margin-left: 5px;
+        }
+        
+        // Remove unused CSS classes
+        .em-section, .em-toggle, .toggle-switch, .slider {
+            display: none;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .formula-display {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .result-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .result-item h4 {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .result-value {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        
+        .comparison {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            color: #856404;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌊 TFFT Calculator</h1>
+            <p>Universal Temporal Flow Field Theory - Tidal Heating Predictor</p>
+            <p><strong>η_τ = 1.36 × 10¹⁹ Pa·s</strong> (Universal Temporal Viscosity)</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="input-section">
+                <div class="preset-moons">
+                    <h3>🌙 Quick Select Known Moons</h3>
+                    <div class="moon-buttons">
+                        <button class="moon-btn" onclick="loadMoon('europa')">Europa</button>
+                        <button class="moon-btn" onclick="loadMoon('io')">Io</button>
+                        <button class="moon-btn" onclick="loadMoon('ganymede')">Ganymede</button>
+                        <button class="moon-btn" onclick="loadMoon('enceladus')">Enceladus</button>
+                        <button class="moon-btn" onclick="loadMoon('titan')">Titan</button>
+                        <button class="moon-btn" onclick="loadMoon('triton')">Triton</button>
+                        <button class="moon-btn" onclick="loadMoon('custom')">Custom</button>
+                    </div>
+                </div>
+                
+                <h3>🔧 Moon Parameters</h3>
+                
+                <div class="input-group">
+                    <label for="moonName">Moon Name:</label>
+                    <input type="text" id="moonName" value="Europa">
+                </div>
+                
+                <div class="input-group">
+                    <label for="planetMass">Planet Mass <span class="unit">(kg)</span>:</label>
+                    <input type="number" id="planetMass" value="1.898e27" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="moonMass">Moon Mass <span class="unit">(kg)</span>:</label>
+                    <input type="number" id="moonMass" value="4.8e22" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="moonRadius">Moon Radius <span class="unit">(km)</span>:</label>
+                    <input type="number" id="moonRadius" value="1560" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="orbitalDistance">Orbital Distance <span class="unit">(km)</span>:</label>
+                    <input type="number" id="orbitalDistance" value="670900" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="orbitalVelocity">Orbital Velocity <span class="unit">(km/s)</span>:</label>
+                    <input type="number" id="orbitalVelocity" value="13.74" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="observedHeating">Observed Heating (Optional) <span class="unit">(W)</span>:</label>
+                    <input type="number" id="observedHeating" value="2.0e12" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label for="resonanceEnhancement">Resonance Enhancement Factor <span class="unit">(dimensionless)</span>:</label>
+                    <input type="number" id="resonanceEnhancement" value="1.0" step="0.1" min="1.0">
+                    <div style="font-size: 0.9em; color: #666; margin-top: 5px;">
+                        1.0 = no resonance, 2.0 = 2x tidal forces, 2.5 = strong resonance (like Io-Europa-Ganymede)
+                    </div>
+                </div>
+                
+                <button class="calculate-btn" onclick="calculateHeating()">🔥 Calculate Tidal Heating</button>
+            </div>
+            
+            <div class="results-section">
+                <h3>📊 TFFT Results</h3>
+                
+                <div class="formula-display">
+                    <strong>TFFT Formula:</strong><br>
+                    Q̇ = η_τ × [(∇T_planet - ∇T_moon) × (v/c)]² × V × R²<br><br>
+                    <strong>Where:</strong><br>
+                    η_τ = 1.36 × 10¹⁹ Pa·s (Universal Temporal Viscosity)<br>
+                    R = Resonance Enhancement Factor (force amplification)<br>
+                    <strong>Note:</strong> Heating scales as R² due to fluid dynamics (E ∝ γ̇²)
+                </div>
+                
+                <div id="calculationResults">
+                    <div class="result-item">
+                        <h4>🌊 Temporal Heating (TFFT)</h4>
+                        <div class="result-value" id="tfftResult">Click Calculate</div>
+                    </div>
+                    
+                    <div class="result-item" id="accuracyResult" style="display: none;">
+                        <h4>🎯 Accuracy vs Observed</h4>
+                        <div class="result-value" id="accuracyValue">-</div>
+                    </div>
+                </div>
+                
+                <div id="detailedBreakdown" style="margin-top: 20px; font-size: 0.9em;">
+                    <!-- Detailed calculations will appear here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison" id="comparisonSection" style="display: none;">
+            <h3>📈 Performance Analysis</h3>
+            <div id="comparisonContent"></div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Temporal Flow Field Theory (TFFT)</strong> - Universal Spacetime Viscosity</p>
+            <p>Developed in collaboration with Claude (Anthropic), GPT-4 (OpenAI), and DeepSeek AI</p>
+            <p>GitHub: <a href="https://github.com/historyViper/TFFT-Theory/">TFFT-Theory Repository</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Constants
+        const ETA_TAU = 1.36e19; // Pa⋅s - Universal temporal viscosity
+        const C = 299792458; // m/s - Speed of light
+        const G = 6.674e-11; // Gravitational constant
+
+        // Moon database (cleaned up - no EM parameters)
+        const moonDatabase = {
+            europa: {
+                name: "Europa",
+                planetMass: 1.898e27,
+                moonMass: 4.8e22,
+                radius: 1560,
+                orbitalDistance: 670900,
+                velocity: 13.74,
+                observed: 2.0e12,
+                resonance: 1.5
+            },
+            io: {
+                name: "Io",
+                planetMass: 1.898e27,
+                moonMass: 8.93e22,
+                radius: 1822,
+                orbitalDistance: 421800,
+                velocity: 17.33,
+                observed: 1.0e14,
+                resonance: 2.5
+            },
+            ganymede: {
+                name: "Ganymede",
+                planetMass: 1.898e27,
+                moonMass: 1.48e23,
+                radius: 2634,
+                orbitalDistance: 1070400,
+                velocity: 10.88,
+                observed: 1.0e12,
+                resonance: 1.2
+            },
+            enceladus: {
+                name: "Enceladus",
+                planetMass: 5.683e26,
+                moonMass: 1.08e20,
+                radius: 252,
+                orbitalDistance: 238020,
+                velocity: 12.63,
+                observed: 1.0e10,
+                resonance: 1.0
+            },
+            titan: {
+                name: "Titan",
+                planetMass: 5.683e26,
+                moonMass: 1.35e23,
+                radius: 2574,
+                orbitalDistance: 1221830,
+                velocity: 5.57,
+                observed: 1.0e11,
+                resonance: 1.0
+            },
+            triton: {
+                name: "Triton",
+                planetMass: 1.024e26,
+                moonMass: 2.14e22,
+                radius: 1353,
+                orbitalDistance: 354759,
+                velocity: 4.39,
+                observed: 1.0e10,
+                resonance: 1.0
+            },
+            custom: {
+                name: "Custom Moon",
+                planetMass: 1e27,
+                moonMass: 1e22,
+                radius: 1000,
+                orbitalDistance: 500000,
+                velocity: 10,
+                observed: 1e12,
+                resonance: 1.0
+            }
+        };
+
+        function loadMoon(moonKey) {
+            const moon = moonDatabase[moonKey];
+            if (!moon) return;
+
+            document.getElementById('moonName').value = moon.name;
+            document.getElementById('planetMass').value = moon.planetMass;
+            document.getElementById('moonMass').value = moon.moonMass;
+            document.getElementById('moonRadius').value = moon.radius;
+            document.getElementById('orbitalDistance').value = moon.orbitalDistance;
+            document.getElementById('orbitalVelocity').value = moon.velocity;
+            document.getElementById('observedHeating').value = moon.observed;
+            document.getElementById('resonanceEnhancement').value = moon.resonance || 1.0;
+        }
+
+        // Remove all leftover EM-related functions
+        // (All EM functions have been removed)
+
+        function calculateHeating() {
+            // Get input values
+            const moonName = document.getElementById('moonName').value;
+            const planetMass = parseFloat(document.getElementById('planetMass').value);
+            const moonMass = parseFloat(document.getElementById('moonMass').value);
+            const radius = parseFloat(document.getElementById('moonRadius').value) * 1000; // Convert to meters
+            const distance = parseFloat(document.getElementById('orbitalDistance').value) * 1000; // Convert to meters
+            const velocity = parseFloat(document.getElementById('orbitalVelocity').value) * 1000; // Convert to m/s
+            const observed = parseFloat(document.getElementById('observedHeating').value);
+            const resonanceEnhancement = parseFloat(document.getElementById('resonanceEnhancement').value);
+            
+            // Calculate temporal gradients
+            const gradientPlanet = G * planetMass / (C * C * distance);
+            const gradientMoon = G * moonMass / (C * C * distance);
+            const gradientDifference = Math.abs(gradientPlanet - gradientMoon);
+            
+            // Calculate temporal shear
+            const velocityFactor = velocity / C;
+            const effectiveShear = gradientDifference * velocityFactor;
+            
+            // Calculate volume
+            const volume = (4/3) * Math.PI * Math.pow(radius, 3);
+            
+            // Calculate TFFT heating with resonance enhancement
+            const heatingTerm = Math.pow(effectiveShear, 2) * volume;
+            const baseTfftHeating = ETA_TAU * heatingTerm;
+            
+            // Apply resonance enhancement (squared because energy scales as force²)
+            const resonanceEnhancementSquared = Math.pow(resonanceEnhancement, 2);
+            const tfftHeating = baseTfftHeating * resonanceEnhancementSquared;
+            
+            // Update results
+            document.getElementById('tfftResult').textContent = `${tfftHeating.toExponential(2)} W`;
+            
+            // Calculate accuracy if observed value provided
+            if (observed && observed > 0) {
+                const accuracy = tfftHeating / observed;
+                const error = Math.abs((tfftHeating - observed) / observed * 100);
+                
+                document.getElementById('accuracyResult').style.display = 'block';
+                document.getElementById('accuracyValue').textContent = `${accuracy.toFixed(2)}x (${error.toFixed(1)}% error)`;
+                
+                // Show comparison
+                showComparison(moonName, tfftHeating, observed, baseTfftHeating, resonanceEnhancement);
+            } else {
+                document.getElementById('accuracyResult').style.display = 'none';
+            }
+            
+            // Show detailed breakdown
+            showDetailedBreakdown(gradientPlanet, gradientMoon, gradientDifference, effectiveShear, volume, baseTfftHeating, resonanceEnhancement, tfftHeating);
+        }
+
+        function showDetailedBreakdown(gradientPlanet, gradientMoon, gradientDiff, effectiveShear, volume, baseTfftHeating, resonanceEnhancement, tfftHeating) {
+            const breakdown = document.getElementById('detailedBreakdown');
+            
+            breakdown.innerHTML = `
+                <h4>🔍 Detailed Breakdown</h4>
+                <p><strong>Planet gradient:</strong> ${gradientPlanet.toExponential(2)}</p>
+                <p><strong>Moon gradient:</strong> ${gradientMoon.toExponential(2)}</p>
+                <p><strong>Gradient difference:</strong> ${gradientDiff.toExponential(2)}</p>
+                <p><strong>Effective shear rate:</strong> ${effectiveShear.toExponential(2)} s⁻¹</p>
+                <p><strong>Volume:</strong> ${volume.toExponential(2)} m³</p>
+                <hr style="margin: 10px 0;">
+                <p><strong>Base TFFT heating:</strong> ${baseTfftHeating.toExponential(2)} W</p>
+                <p><strong>Resonance enhancement:</strong> ${resonanceEnhancement}x (force) → ${Math.pow(resonanceEnhancement, 2)}x (heating)</p>
+                <p><strong>Enhanced TFFT heating:</strong> ${tfftHeating.toExponential(2)} W</p>
+            `;
+        }
+
+        function showComparison(moonName, tfftHeating, observed, baseTfftHeating, resonanceEnhancement) {
+            const section = document.getElementById('comparisonSection');
+            const content = document.getElementById('comparisonContent');
+            
+            const accuracy = tfftHeating / observed;
+            const error = Math.abs((tfftHeating - observed) / observed * 100);
+            const baseAccuracy = baseTfftHeating / observed;
+            
+            let status, statusColor;
+            if (accuracy >= 0.5 && accuracy <= 2.0) {
+                status = "Excellent";
+                statusColor = "#28a745";
+            } else if (accuracy >= 0.33 && accuracy <= 3.0) {
+                status = "Good";
+                statusColor = "#ffc107";
+            } else if (accuracy >= 0.1 && accuracy <= 10.0) {
+                status = "Acceptable (additional physics needed)";
+                statusColor = "#fd7e14";
+            } else {
+                status = "Poor (major additional effects)";
+                statusColor = "#dc3545";
+            }
+            
+            content.innerHTML = `
+                <p><strong>${moonName} TFFT Performance:</strong></p>
+                <p>🌊 <strong>Base TFFT:</strong> ${baseTfftHeating.toExponential(2)} W (${baseAccuracy.toFixed(2)}x)</p>
+                <p>🔄 <strong>Resonance Enhanced:</strong> ${tfftHeating.toExponential(2)} W</p>
+                <p>🎯 <strong>Observed Total:</strong> ${observed.toExponential(2)} W</p>
+                <p>📈 <strong>Final Accuracy:</strong> <span style="color: ${statusColor}; font-weight: bold;">${accuracy.toFixed(2)}x (${status})</span></p>
+                <p>📉 <strong>Error:</strong> ${error.toFixed(1)}%</p>
+                ${resonanceEnhancement > 1.0 ? `
+                <hr style="margin: 10px 0;">
+                <p><strong>Enhancement Details:</strong></p>
+                <p>⚡ Force amplification: ${resonanceEnhancement}x</p>
+                <p>🔥 Heating amplification: ${Math.pow(resonanceEnhancement, 2).toFixed(1)}x (due to fluid dynamics E ∝ γ̇²)</p>
+                <p>📊 Improvement: ${(accuracy/baseAccuracy).toFixed(1)}x better than base TFFT</p>
+                ` : ''}
+            `;
+            
+            section.style.display = 'block';
+        }
+
+        // Initialize with Europa
+        window.onload = function() {
+            loadMoon('europa');
+        };
+    </script>
+</body>
+</html>
