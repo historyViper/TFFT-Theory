@@ -30,7 +30,7 @@ UPDATED July 4th, 2025
 | Moon | System | Predicted | Observed | Factor | Status |
 |------|--------|-----------|----------|--------|---------|
 | **Europa** | Jupiter | 2.00×10¹² W | 2.00×10¹² W | 1.00 | ✅ Perfect |
-| **Io** | Jupiter | 7.3×10¹³ W | 1.0×10¹⁴ W | 0.73 | ✅ Good (TFFT+EM base) |
+| **Io** | Jupiter | 7.3×10¹³ W | 1.0×10¹⁴ W | 0.13 | ✅ 1.29e+13 W Poor needs EM effects + more variables |
 | **Ganymede** | Jupiter | 2.37×10¹² W | 1.00×10¹² W | 2.37 | ✅ Excellent |
 | **Enceladus** | Saturn | 5.07×10⁹ W | 1.00×10¹⁰ W | 0.51 | ✅ Good |
 | **Titan** | Saturn | 3.99×10¹⁰ W | 1.00×10¹¹ W | 0.40 | ✅ Good |
@@ -66,12 +66,6 @@ UPDATED July 4th, 2025
 ✅ Single universal constant for all moons  
 ✅ Much simpler than conventional models  
 ✅ Electromagnetic enhancement predictable for magnetic environments
-
-## **Electromagnetic Enhancement Formula**
-
-For moons in strong magnetic environments (like Io around Jupiter), additional heating from eddy currents:
-
-## P_EM = (B²v²L²) / ρ_e
 
 **Where:**
 - **B** = Magnetic field strength at moon's orbit (Tesla)
