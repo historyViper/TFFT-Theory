@@ -116,7 +116,7 @@ New Physics: Universal temporal viscosity + gradient dynamics
 
 ### **Phase 4: Exoplanet Validation** 🌌
 - Extended predictions to alien worlds
-- **Kepler-1625b exomoon**: 1.03 × 10¹² W predicted
+- **Kepler-1625b exomoon**: 1.83 × 10¹² W predicted with tempurature modification by deepseek
 - Proves temporal viscosity is truly universal
 
 ---
@@ -124,12 +124,12 @@ New Physics: Universal temporal viscosity + gradient dynamics
 ## 🧪 **Testable Predictions**
 
 ### **Immediate Tests**
-1. **Io's electromagnetic heating**: Eddy currents contribute ~60% of total heating, with remaining 27% likely from plasma effects
+1. **Io's electromagnetic heating**: resonance brings it up to 80%
 2. **Enceladus interior structure**: Predicts porous/complex internal dynamics
 3. **Ganymede tidal locking effects**: Should reduce effective temporal shear
 
 ### **Advanced Tests**
-1. **Exoplanet observations**: JWST verification of predicted exomoon heating (1-10×10¹² W range depending on host planet magnetic field)
+1. **Exoplanet observations**: JWST verification of predicted exomoon heating (1.83×10¹² W range with temperature mod)
 2. **Temporal gradient detection**: Direct measurement of spacetime viscosity effects
 3. **Universal constant verification**: Same η_τ across all cosmic environments
 
