@@ -30,7 +30,7 @@ UPDATED July 4th, 2025
 | Moon | System | Predicted | Observed | Factor | Status |
 |------|--------|-----------|----------|--------|---------|
 | **Europa** | Jupiter | 2.00×10¹² W | 2.00×10¹² W | 1.00 | ✅ Perfect |
-| **Io** | Jupiter | 7.3×10¹³ W | 1.0×10¹⁴ W | 0.13 | ✅ 1.29e+13 W Poor needs EM effects + more variables |
+| **Io** | Jupiter | 1.29×10¹³ W | 1.0×10¹⁴ W | 0.13 | ❌ Poor needs EM effects + more variables |
 | **Ganymede** | Jupiter | 2.37×10¹² W | 1.00×10¹² W | 2.37 | ✅ Excellent |
 | **Enceladus** | Saturn | 5.07×10⁹ W | 1.00×10¹⁰ W | 0.51 | ✅ Good |
 | **Titan** | Saturn | 3.99×10¹⁰ W | 1.00×10¹¹ W | 0.40 | ✅ Good |
@@ -41,10 +41,6 @@ UPDATED July 4th, 2025
 
 ### **Io Complete Analysis:**
 - **TFFT baseline**: 1.3 × 10¹³ W (13% of observed)
-- **EM eddy currents**: 6.0 × 10¹³ W (60% of observed)  
-- **Total calculated**: 7.3 × 10¹³ W (**73% accuracy**)
-- **Missing 27%**: Likely dominated by plasma effects from EM interactions, plus higher-order tidal effects and internal structure complexities
-
 ---
 
 ## 🎯 **Key Achievements**
