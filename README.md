@@ -30,7 +30,7 @@ UPDATED July 4th, 2025
 | Moon | System | Predicted | Observed | Factor | Status |
 |------|--------|-----------|----------|--------|---------|
 | **Europa** | Jupiter | 2.00×10¹² W | 2.00×10¹² W | 1.00 | ✅ Perfect |
-| **Io** | Jupiter | 1.29×10¹³ W | 1.0×10¹⁴ W | 0.13 | ❌ Poor needs EM effects + more variables |
+| **Io** | Jupiter | 1.29×10¹³ W +R 8.03×10¹³| 1.0×10¹⁴ W | 0.83 | ✅ Good with added resonance |
 | **Ganymede** | Jupiter | 2.37×10¹² W | 1.00×10¹² W | 2.37 | ✅ Excellent |
 | **Enceladus** | Saturn | 5.07×10⁹ W | 1.00×10¹⁰ W | 0.51 | ✅ Good |
 | **Titan** | Saturn | 3.99×10¹⁰ W | 1.00×10¹¹ W | 0.40 | ✅ Good |
